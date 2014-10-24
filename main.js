@@ -126,7 +126,7 @@ window.onload = function() {
     };
     
 
-    game.tick = 16 * 10;
+    game.tick = 16 * 15;
     game.rootScene.addEventListener(Event.ENTER_FRAME, function() {
         game.tick--;
         if (game.tick > 0) {
@@ -137,7 +137,7 @@ window.onload = function() {
             }
         }
 		if(game.tick ==0){
-			alert(game.score);
+			alert("Game Over");
 		}
     });
     
