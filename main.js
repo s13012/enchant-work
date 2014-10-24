@@ -8,7 +8,7 @@ window.onload = function() {
 
     game = new Core(gsettings.width, gsettings.height);
     game.fps = 16;
-    game.score = 0;
+	game.score = 0;
     var label;
     var bear;
     game.preload('chara1.png',
@@ -120,6 +120,7 @@ window.onload = function() {
         });
         // リンゴにタッチ
         apple.ontouchstart = function() {
+			game.score++;
             var blast = new Blast(apple.x, apple.y);
             this.remove();
         };
@@ -137,7 +138,7 @@ window.onload = function() {
             }
         }
 		if(game.tick ==0){
-			alert("Game Over");
+			alert("SCORE:" + game.score);
 		}
     });
     
