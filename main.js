@@ -1,12 +1,14 @@
+'use strict';
+
 enchant();
-gsettings = {
+var gsettings = {
 	width:320,
 	height:320,
 };
 
 window.onload = function() {
 
-    game = new Core(gsettings.width, gsettings.height);
+    var game = new Core(gsettings.width, gsettings.height);
     game.fps = 16;
 	game.score = 0;
     var label;
@@ -114,7 +116,7 @@ window.onload = function() {
             } 
 
             else if (apple.y > 286) {
-                blast = new Blast(apple.x, apple.y);
+                var blast = new Blast(apple.x, apple.y);
                 this.remove(); 
             }
         });
