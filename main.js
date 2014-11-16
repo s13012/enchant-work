@@ -52,9 +52,8 @@ gs.assets.time = {
 }
 
 window.onload = function() {
-  var bear, timerLabel, game = new Core(gs.width, gs.height);
+  var bear, timerLabel, scoreLabel, game = new Core(gs.width, gs.height);
   game.fps = gs.fps; 
-  game.score = 0;
   game.preload(
       gs.assets.bear.path,
       gs.assets.map.path,
@@ -166,7 +165,7 @@ window.onload = function() {
       }
     },
     ontouchstart:function(){
-      game.score++;
+      scoreLabel.score++;
       new Blast(this.x, this.y);
       this.remove();
     }
@@ -174,9 +173,9 @@ window.onload = function() {
 
   var CreateApple = Class.create({
     initialize:function(){
-      this.CreateApples();
+      this.createApples();
     },
-    CreateApples:function(){
+    createApples:function(){
       game.rootScene.addEventListener(Event.ENTER_FRAME, function() {
         if (game.frame > 0) {
           if ((game.frame % 10) === 0) {
@@ -185,7 +184,6 @@ window.onload = function() {
         }
 
         if (timerLabel.time < 0) {
-          alert("SCORE:" + game.score);
           game.end();
         }
       });
@@ -224,6 +222,9 @@ window.onload = function() {
     //残り時間
     timerLabel = new TimerLabel();
     game.rootScene.addChild(timerLabel);
+    //スコア
+    scoreLabel = new ScoreLabel(gs.width - 130, 0);
+    game.rootScene.addChild(scoreLabel);
     //クマ
     bear = new Bear();
     game.rootScene.addChild(bear);
